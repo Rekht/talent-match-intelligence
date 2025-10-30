@@ -42,3 +42,41 @@ based on psychometric, competency, teamwork, and performance data.
 ```bash
 git clone https://github.com/yourusername/talent-match-intelligence.git
 cd talent-match-intelligence
+
+### 2️⃣ Create and Activate Virtual Environment
+```bash
+python -m venv venv
+source venv/bin/activate      # macOS / Linux
+venv\Scripts\activate         # Windows
+
+### 3️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+
+requirements.txt includes:
+```bash
+streamlit
+pandas
+plotly
+requests
+supabase
+numpy
+python-dotenv
+
+### 4️⃣ Configure Environment Variables
+⚠️ The .env file is not included in the repository — you must create it manually.
+
+```bash
+# Supabase Configuration
+SUPABASE_URL=https://your-supabase-url.supabase.co
+SUPABASE_KEY=your-supabase-service-role-key
+
+# A4F API Configuration
+A4F_API_KEY=your-a4f-api-key
+A4F_MODEL=provider-3/yout-model
+
+### ▶️ Running the App
+```bash
+streamlit run streamlit_app.py
+
+After the setup is complete, launch the dashboard using: streamlit run streamlit_app.py
