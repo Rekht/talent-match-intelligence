@@ -1,0 +1,5 @@
+streamlit
+pandasplotly
+requests
+supabasenumpy
+python-dotenv
