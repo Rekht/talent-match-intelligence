@@ -1147,13 +1147,33 @@ elif st.session_state.analysis_complete:
                     labels={'final_match_rate': 'Match Rate (%)', 'count': 'Number of Candidates'},
                     color_discrete_sequence=['#3b82f6']
                 )
+
+                # ⬇️ tambahkan konfigurasi agar semua teks hitam
                 fig_dist.update_layout(
                     showlegend=False,
                     plot_bgcolor='white',
-                    paper_bgcolor='white'
+                    paper_bgcolor='white',
+
+                    # warna teks global (judul, label, legend)
+                    font=dict(color='black'),
+
+                    # warna teks sumbu X dan Y
+                    xaxis=dict(
+                        title=dict(text='Match Rate (%)', font=dict(color='black')),
+                        tickfont=dict(color='black')
+                    ),
+                    yaxis=dict(
+                        title=dict(text='Count', font=dict(color='black')),
+                        tickfont=dict(color='black')
+                    )
                 )
+
+                # kalau nanti kamu menampilkan nilai di batang histogram
+                fig_dist.update_traces(textfont=dict(color='black'))
+
                 st.plotly_chart(fig_dist, use_container_width=True)
-            
+
+
             with viz_col2:
                 # Top 10 Candidates Bar Chart
                 top10_data = match_results.head(10)
@@ -1171,8 +1191,23 @@ elif st.session_state.analysis_complete:
                     showlegend=False,
                     plot_bgcolor='white',
                     paper_bgcolor='white',
-                    yaxis={'categoryorder': 'total ascending'}
+                    font=dict(color='black'),
+                    xaxis=dict(
+                        title=dict(text='Match Rate (%)', font=dict(color='black')),
+                        tickfont=dict(color='black')
+                    ),
+                    yaxis=dict(
+                        categoryorder='total ascending',
+                        title=dict(text='Candidate', font=dict(color='black')),
+                        tickfont=dict(color='black')
+                    ),
+                    coloraxis_colorbar=dict(
+                        title=dict(font=dict(color='black')),
+                        tickfont=dict(color='black')
+                    )
                 )
+
+                fig_top10.update_traces(textfont=dict(color='black'))
                 st.plotly_chart(fig_top10, use_container_width=True)
             
             # TGV Competency Analysis
@@ -1183,9 +1218,9 @@ elif st.session_state.analysis_complete:
             
             # Radar Chart for TGV comparison
             fig_comp = go.Figure()
-            
+
             tgv_labels = ['Cognitive', 'Leadership', 'Teamwork', 'Technical']
-            
+
             for idx, row in top5.iterrows():
                 fig_comp.add_trace(go.Scatterpolar(
                     r=[
@@ -1198,20 +1233,27 @@ elif st.session_state.analysis_complete:
                     fill='toself',
                     name=row['fullname']
                 ))
-            
+
             fig_comp.update_layout(
                 polar=dict(
                     radialaxis=dict(
                         visible=True,
-                        range=[0, 100]
+                        range=[0, 100],
+                        tickfont=dict(color='black'),
+                        title=dict(font=dict(color='black'))
+                    ),
+                    angularaxis=dict(
+                        tickfont=dict(color='black'),
+                        color='black'
                     )
                 ),
-                showlegend=True,
-                title='TGV Competency Radar Chart - Top 5 Candidates',
+                font=dict(color='black'),
+                legend=dict(font=dict(color='black')),
+                title=dict(text='TGV Competency Radar Chart - Top 5 Candidates', font=dict(color='black')),
                 paper_bgcolor='white',
                 plot_bgcolor='white'
             )
-            
+
             st.plotly_chart(fig_comp, use_container_width=True)
             
             # TGV Breakdown Table
@@ -1262,19 +1304,35 @@ elif st.session_state.analysis_complete:
                 color_continuous_scale='Viridis',
                 text='Average Score'
             )
-            fig_avg.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
+            fig_avg.update_traces(
+                texttemplate='%{text:.1f}%',
+                textposition='outside',
+                textfont=dict(color='black')
+            )
             fig_avg.update_layout(
                 showlegend=False,
                 plot_bgcolor='white',
                 paper_bgcolor='white',
-                yaxis_range=[0, 100]
+                yaxis_range=[0, 100],
+                font=dict(color='black'),
+                xaxis=dict(
+                    title=dict(text='TGV', font=dict(color='black')),
+                    tickfont=dict(color='black')
+                ),
+                yaxis=dict(
+                    title=dict(text='Average Score', font=dict(color='black')),
+                    tickfont=dict(color='black')
+                ),
+                coloraxis_colorbar=dict(
+                    title=dict(font=dict(color='black')),
+                    tickfont=dict(color='black')
+                )
             )
             st.plotly_chart(fig_avg, use_container_width=True)
-            
-            # Download Results
+
             st.markdown("---")
             st.subheader("Download Results")
-            
+
             csv = match_results.to_csv(index=False)
             st.download_button(
                 label="Download Full Results (CSV)",
@@ -1282,6 +1340,7 @@ elif st.session_state.analysis_complete:
                 file_name=f"talent_match_results_{role_name.replace(' ', '_')}.csv",
                 mime="text/csv"
             )
+
             
         else:
             st.error("No analysis results available. Please check your database connection.")
