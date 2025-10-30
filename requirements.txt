@@ -1,5 +1,7 @@
 streamlit
-pandasplotly
+pandas
+plotly
 requests
-supabasenumpy
+supabase
+numpy
 python-dotenv
