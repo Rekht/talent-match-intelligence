@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.x-ff4b4b?logo=streamlit)
 ![Supabase](https://img.shields.io/badge/Supabase-Connected-3fcf8e?logo=supabase)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 An **AI-powered analytics dashboard** built with **Streamlit**, **Supabase**, and **A4F API**,  
 designed to analyze and match employee talent profiles using the **TGV/TV (Talent Group Variable / Talent Variable)** framework.  
