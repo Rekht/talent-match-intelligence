@@ -5,4 +5,7 @@ requests
 supabase
 numpy
 python-dotenv
+<<<<<<< HEAD
 matplotlib
+=======
+>>>>>>> e0ebccfbcc99cef2c68b69b81c49ae4cf0f18324
