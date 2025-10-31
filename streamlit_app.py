@@ -1115,22 +1115,12 @@ elif st.session_state.analysis_complete:
                 )
                 
                 if not tv_breakdown.empty:
-                    # Styling function for tv_match_rate
-                    def color_match_rate(val):
-                        if val >= 100:
-                            color = '#86efac'  # green
-                        elif val >= 80:
-                            color = '#bef264'  # lime
-                        elif val >= 60:
-                            color = '#fde047'  # yellow
-                        else:
-                            color = '#fca5a5'  # red
-                        return f'background-color: {color}'
-                    
                     st.dataframe(
-                        tv_breakdown.style.applymap(
-                            color_match_rate, 
-                            subset=['tv_match_rate']
+                        tv_breakdown.style.background_gradient(
+                            subset=['tv_match_rate'],
+                            cmap='RdYlGn',
+                            vmin=50,
+                            vmax=150
                         ).format({
                             'baseline_score': '{:.2f}',
                             'user_score': '{:.2f}',
