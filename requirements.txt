@@ -6,4 +6,3 @@ supabase
 numpy
 python-dotenv
 matplotlib
-
