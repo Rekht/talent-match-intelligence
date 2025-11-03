@@ -12,6 +12,21 @@ based on psychometric, competency, teamwork, and performance data.
 
 ---
 
+## ⚠️ API Service Notice
+
+> **ℹ️ A4F API Service Alert (Updated November 2025)**  
+> Some users may experience **403 errors or slow responses** when using the **A4F AI endpoints**.  
+> This is due to **ongoing performance issues** with the A4F Free Tier API.  
+> You can monitor the real-time status at:  
+> 🔗 [https://www.a4f.co/status](https://www.a4f.co/status)
+
+If you encounter an error like:
+AI API Error: 403
+Failed to generate job profile. Please check API connection or try again.
+Please note that this issue is temporary and related to A4F API availability, not the app configuration.
+
+---
+
 ## ✨ Features
 
 - 🤖 **AI-Generated Job Profiles** – Automatically creates detailed job descriptions using the A4F API  
