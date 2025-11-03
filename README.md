@@ -21,8 +21,11 @@ based on psychometric, competency, teamwork, and performance data.
 > 🔗 [https://www.a4f.co/status](https://www.a4f.co/status)
 
 If you encounter an error like:
+
 AI API Error: 403
+
 Failed to generate job profile. Please check API connection or try again.
+
 Please note that this issue is temporary and related to A4F API availability, not the app configuration.
 
 ---
